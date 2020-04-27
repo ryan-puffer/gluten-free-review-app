@@ -6,7 +6,7 @@
             <h1>Welcome to Fundamentally Gluten-Free</h1>
             <p>GF Curated</p>
             <p>
-            <a class="btn btn-primary btn-md" href="/restaurants/new">Add New Restaurant</a>
+                <a class="btn btn-primary btn-md" href="/restaurants/new">Add New Restaurant</a>
             </p>
             </header>
         </div>
@@ -15,14 +15,20 @@
 
 
     
-    <div class="row">
+    <div class="row text-center" style="display: flex; flex-wrap: wrap;">
+        <div class="col-lg-12">
+            <h3>Our most popular gluten-friendly restaurants</h3>
+        </div>
         <% restaurants.forEach(function(restaurant){ %>
-            <div class="col-md-3 col-sm-6">
+            <div class="col-lg-3 col-md-3 col-sm-6">
                 <div class="thumbnail">
                     <img src="<%= restaurant.image %>" alt="">
+                    <div class="caption">
+                        <h4><%= restaurant.name %></h4>
+                    </div>
                 </div>
             </div>
-        <% }) %>
+        <% }); %>
     </div>  
 </div>
 <%- include("partials/footer") %>

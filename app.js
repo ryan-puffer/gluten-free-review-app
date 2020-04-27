@@ -30,6 +30,10 @@ app.post("/restaurants", function(req, res){
     res.redirect("/restaurants");
 })
 
+app.get("/restaurants/:id", function(req, res){
+    
+})
+
 app.get("/restaurants/new", function(req, res){
     res.render("new");
 })
