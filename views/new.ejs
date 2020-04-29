@@ -1,15 +1,15 @@
 <%- include ("partials/header") %>
-
-
-<h1>Create a new restaurant review</h1>
-
-<form action="/restaurants" method="POST">
-<input type="text" name="name" placeholder="name">
-<input type="text" name="image" placeholder="image url">
-<button>Submit</button>
-
-</form>
-
-<a href="/restaurants">Go Back</a>
-
+<div class="container">
+    <div class="row">
+        <h1>Create a new restaurant review</h1>
+        <div style="width: 30%; margin: 0 auto">
+            <form action="/restaurants" method="POST">
+            <input class="form-control" type="text" name="name" placeholder="name">
+            <input class="form-control" type="text" name="image" placeholder="image url">
+            <button class="btn btn-lg btn-default btn-block">Submit</button>
+            </form>
+        </div>
+    <a href="/restaurants">Go Back</a>
+    </div>
+</div>
 <%- include ("partials/footer") %>
