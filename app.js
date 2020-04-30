@@ -36,22 +36,22 @@ var Restaurant = mongoose.model('Restaurant', restaurantSchema);
 // 	}
 // ];
 
-Restaurant.create(
-	{
-		name: 'Spirals',
-		image:
-			'https://images.unsplash.com/photo-1573256814950-6604b19492e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-		description: 'Really tasty treats'
-	},
-	function(err, restaurant) {
-		if (err) {
-			console.log(err);
-		} else {
-			console.log('NEWLY CREATED RESTAURANT: ');
-			console.log(restaurant);
-		}
-	}
-);
+// Restaurant.create(
+// 	{
+// 		name: 'Spirals',
+// 		image:
+// 			'https://images.unsplash.com/photo-1573256814950-6604b19492e7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+// 		description: 'Really tasty treats'
+// 	},
+// 	function(err, restaurant) {
+// 		if (err) {
+// 			console.log(err);
+// 		} else {
+// 			console.log('NEWLY CREATED RESTAURANT: ');
+// 			console.log(restaurant);
+// 		}
+// 	}
+// );
 
 app.get('/', function(req, res) {
 	res.render('landing');
@@ -72,17 +72,31 @@ app.post('/restaurants', function(req, res) {
 	//get data from form and add to restaurants array
 	var name = req.body.name;
 	var image = req.body.image;
-	var newRestaurant = { name: name, image: image };
-	restaurants.push(newRestaurant);
-	//redirect to campgrounds page
-	res.redirect('/restaurants');
+	var desc = req.body.description;
+	var newRestaurant = { name: name, image: image, description: desc };
+	Restaurant.create(newRestaurant, function(err, newlyCreated) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.redirect('/restaurants');
+		}
+	});
 });
-
-app.get('/restaurants/:id', function(req, res) {});
 
 app.get('/restaurants/new', function(req, res) {
 	res.render('new');
 });
+
+app.get('/restaurants/:id', function(req, res) {
+	Restaurant.findById(req.params.id, function(err, foundRestaurant) {
+		if (err) {
+			console.log(err);
+		} else {
+			res.render('show', { restaurant: foundRestaurant });
+		}
+	});
+});
+
 app.listen(3000, function() {
 	console.log('GF Server Started');
 });

@@ -1,4 +1,5 @@
 <%- include ("partials/header") %>
+
 <div class="container">
     <div class="row">
         <h1>Create a new restaurant review</h1>
@@ -6,10 +7,12 @@
             <form action="/restaurants" method="POST">
             <input class="form-control" type="text" name="name" placeholder="name">
             <input class="form-control" type="text" name="image" placeholder="image url">
-            <button class="btn btn-lg btn-default btn-block">Submit</button>
+            <input class="form-control" type="text" name="description" placeholder="description">
+            <button class="btn btn-lg btn-primary btn-block">Submit</button>
             </form>
         </div>
     <a href="/restaurants">Go Back</a>
     </div>
 </div>
+
 <%- include ("partials/footer") %>
