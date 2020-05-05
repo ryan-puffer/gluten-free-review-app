@@ -63,7 +63,7 @@ app.get('/restaurants', function(req, res) {
 		if (err) {
 			console.log(err);
 		} else {
-			res.render('restaurants', { restaurants: allRestaurants });
+			res.render('index', { restaurants: allRestaurants });
 		}
 	});
 });
