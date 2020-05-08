@@ -48,10 +48,11 @@ app.get('/restaurants/new', function(req, res) {
 });
 
 app.get('/restaurants/:id', function(req, res) {
-	Restaurant.findById(req.params.id, function(err, foundRestaurant) {
+	Restaurant.findById(req.params.id).populate('comments').exec(function(err, foundRestaurant) {
 		if (err) {
 			console.log(err);
 		} else {
+			console.log(foundRestaurant);
 			res.render('show', { restaurant: foundRestaurant });
 		}
 	});
